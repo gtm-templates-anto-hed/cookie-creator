@@ -1,4 +1,4 @@
-﻿___TERMS_OF_SERVICE___
+___TERMS_OF_SERVICE___
 
 By creating or modifying this file you agree to Google Tag Manager's Community
 Template Gallery Developer Terms of Service available at
@@ -19,7 +19,7 @@ ___INFO___
     "id": "brand_dummy",
     "displayName": ""
   },
-  "description": "This custom tag helps you to easily create a Cookie without advanced knowledge.",
+  "description": "This template helps you to easily create a Custom Cookie without advanced knowledge.",
   "containerContexts": [
     "WEB"
   ]
@@ -34,34 +34,26 @@ ___TEMPLATE_PARAMETERS___
     "name": "text1CookieName",
     "displayName": "Cookie Name",
     "simpleValueType": true,
-    "help": "You must allow the cookie by specifying its settings in the permission tab. The name of the cookie must be similar to the name used in the field. More information: https://developers.google.com/tag-manager/templates/permissions#set_cookies",
-    "notSetText": "You must enter a cookie name",
+    "help": "You must allow the cookie by specifying its settings in the permission tab. The name of the cookie must be similar to the name used in the field. \n\nFor allowed Cookie Name Permission\n1 - On GTM//\n2 - Click on : Templates\n3 - Click on : Tag Template // Cookie Creator\n4 - Click on : Persmissions\n5 - Click on : Sets a cookie value\n6 - Click on : +Add allowed cookie\n7 - Fill : \"Cookie Name\"\n8 - Fill : \"*\" for Domain \u0026 Path\n\nMore information: https://github.com/gtm-templates-anto-hed/cookie-creator",
     "defaultValue": "_my_cookie_name",
     "valueValidators": [
       {
         "type": "NON_EMPTY"
       }
-    ]
+    ],
+    "alwaysInSummary": true
   },
   {
     "type": "TEXT",
     "name": "text1CookieValue",
     "displayName": "Cookie Value",
-    "simpleValueType": true
-  },
-  {
-    "type": "TEXT",
-    "name": "text1Domain",
-    "displayName": "Cookie Domain",
     "simpleValueType": true,
-    "help": "Set this value to \u0027auto\u0027 to try to write the cookie using the broadest possible domain, based on the document location. If that fails, it will try successively narrower subdomains. If all of those fail, it will try to write the cookie without a domain. If no value is set, this will try to write the cookie without a domain specified. Note: when a cookie without a domain specified is written to document.cookie, the user agent will default the cookie’s domain to the host of the current document location."
-  },
-  {
-    "type": "TEXT",
-    "name": "text1Path",
-    "displayName": "Cookie Path",
-    "simpleValueType": true,
-    "help": "When a cookie without a path specified is written to document.cookie, the user agent will default the cookie’s path to the path of the current document location."
+    "valueValidators": [
+      {
+        "type": "NON_EMPTY"
+      }
+    ],
+    "alwaysInSummary": false
   },
   {
     "type": "SELECT",
@@ -78,8 +70,8 @@ ___TEMPLATE_PARAMETERS___
         "displayValue": "By hour"
       },
       {
-        "value": "days",
-        "displayValue": "By days"
+        "value": "day",
+        "displayValue": "By day"
       },
       {
         "value": "months",
@@ -95,7 +87,9 @@ ___TEMPLATE_PARAMETERS___
       }
     ],
     "simpleValueType": true,
-    "help": "Specifie the duration of your cookie, if session is selected,  the cookie becomes a session cookie. A session finishes when the client shuts down, and session cookies will be removed."
+    "help": "Specifie the duration of your cookie, if session is selected,  the cookie becomes a session cookie. A session finishes when the client shuts down, and session cookies will be removed.",
+    "defaultValue": "session",
+    "alwaysInSummary": false
   },
   {
     "type": "GROUP",
@@ -264,7 +258,7 @@ ___TEMPLATE_PARAMETERS___
   {
     "type": "GROUP",
     "name": "group1ExpirePerDay",
-    "displayName": "Expiration by days",
+    "displayName": "Expiration by day",
     "groupStyle": "ZIPPY_OPEN",
     "subParams": [
       {
@@ -404,7 +398,7 @@ ___TEMPLATE_PARAMETERS___
     "enablingConditions": [
       {
         "paramName": "dropDownMenu1ExpireType",
-        "paramValue": "days",
+        "paramValue": "day",
         "type": "EQUALS"
       }
     ]
@@ -509,6 +503,116 @@ ___TEMPLATE_PARAMETERS___
         "type": "EQUALS"
       }
     ]
+  },
+  {
+    "type": "GROUP",
+    "name": "group1enhanced",
+    "displayName": "More Settings",
+    "groupStyle": "ZIPPY_OPEN_ON_PARAM",
+    "subParams": [
+      {
+        "type": "GROUP",
+        "name": "group2CustomDomain",
+        "displayName": "Set Domain (optional)",
+        "groupStyle": "ZIPPY_OPEN_ON_PARAM",
+        "subParams": [
+          {
+            "type": "CHECKBOX",
+            "name": "checkbox1Domain",
+            "checkboxText": "Enable Domain Option",
+            "simpleValueType": true,
+            "help": "Auto by default. Set this value to \u0027auto\u0027 to try to write the cookie using the broadest possible domain, based on the document location. If that fails, it will try successively narrower subdomains. If all of those fail, it will try to write the cookie without a domain. If no value is set, this will try to write the cookie without a domain specified. Note: when a cookie without a domain specified is written to document.cookie, the user agent will default the cookie’s domain to the host of the current document location."
+          },
+          {
+            "type": "TEXT",
+            "name": "text1Domain",
+            "displayName": "Your custom domain",
+            "simpleValueType": true,
+            "valueValidators": [],
+            "enablingConditions": [
+              {
+                "paramName": "checkbox1Domain",
+                "paramValue": true,
+                "type": "EQUALS"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "GROUP",
+        "name": "group2CustomPath",
+        "displayName": "Set Path (optional)",
+        "groupStyle": "ZIPPY_OPEN_ON_PARAM",
+        "subParams": [
+          {
+            "type": "CHECKBOX",
+            "name": "checkbox1Path",
+            "checkboxText": "Enable Path Option",
+            "simpleValueType": true,
+            "help": "When a cookie without a path specified is written to document.cookie, the user agent will default the cookie’s path to the path of the current document location."
+          },
+          {
+            "type": "TEXT",
+            "name": "text1Path",
+            "displayName": "Your custom path",
+            "simpleValueType": true,
+            "valueValidators": [],
+            "enablingConditions": [
+              {
+                "paramName": "checkbox1Path",
+                "paramValue": true,
+                "type": "EQUALS"
+              }
+            ]
+          }
+        ],
+        "enablingConditions": []
+      },
+      {
+        "type": "GROUP",
+        "name": "group2CustomSameSite",
+        "displayName": "Set SameSite (optional)",
+        "groupStyle": "ZIPPY_OPEN_ON_PARAM",
+        "subParams": [
+          {
+            "type": "CHECKBOX",
+            "name": "checkbox1SameSite",
+            "checkboxText": "Enable SameSite Option",
+            "simpleValueType": true,
+            "help": "Asserts that a cookie must not be sent with cross-origin requests, providing some protection against cross-site request forgery attacks (CSRF)."
+          },
+          {
+            "type": "SELECT",
+            "name": "dropDownMenu1SameSite",
+            "displayName": "",
+            "macrosInSelect": false,
+            "selectItems": [
+              {
+                "value": "None",
+                "displayValue": "None"
+              },
+              {
+                "value": "Strict",
+                "displayValue": "Strict"
+              },
+              {
+                "value": "Lax",
+                "displayValue": "Lax"
+              }
+            ],
+            "simpleValueType": true,
+            "enablingConditions": [
+              {
+                "paramName": "checkbox1SameSite",
+                "paramValue": true,
+                "type": "EQUALS"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]
 
@@ -520,13 +624,16 @@ const setCookie = require('setCookie');
 const queryPermission = require('queryPermission');
 const text1CookieName = data.text1CookieName;
 const text1CookieValue = data.text1CookieValue;
-const text1Domain = data.text1Domain;
 const dropDownMenu1ExpireMinute = data.dropDownMenu1ExpireMinute;
 const dropDownMenu1ExpireHour = data.dropDownMenu1ExpireHour;
 const dropDownMenu1ExpireDays = data.dropDownMenu1ExpireDays;
 const dropDownMenu1ExpireMonths = data.dropDownMenu1ExpireMonths;
-const dropDownMenu1ExpireCustom = data.dropDownMenu1ExpireCustom; log(dropDownMenu1ExpireCustom);
-const dropDownMenu1ExpireType = data.dropDownMenu1ExpireType; log(dropDownMenu1ExpireType);
+const dropDownMenu1ExpireCustom = data.dropDownMenu1ExpireCustom;
+const dropDownMenu1ExpireType = data.dropDownMenu1ExpireType;
+const text1Domain = data.text1Domain;
+const text1Path = data.text1Path;
+const dropDownMenu1SameSite = data.dropDownMenu1SameSite;
+
 
 function expire(dropDownMenu1ExpireType) {
   if (dropDownMenu1ExpireType === 'minute') {
@@ -540,11 +647,14 @@ function expire(dropDownMenu1ExpireType) {
   }
 }
 
+
+
 const options = {
-  'domain': data.text1Domain,
-  'path': data.text1Path,
+  'domain': text1Domain,
+  'path': text1Path,
   'max-age': expire(dropDownMenu1ExpireType),
-  'expires' : dropDownMenu1ExpireCustom
+  'expires' : dropDownMenu1ExpireCustom,
+  'samesite' : dropDownMenu1SameSite
 };
 
 log(options);
@@ -653,6 +763,5 @@ scenarios: []
 
 ___NOTES___
 
-Created on 08/11/2019 à 15:23:11
-
+Created on 26/11/2019 à 12:10:24
 
