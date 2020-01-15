@@ -1,3 +1,5 @@
+homepage: "https://antoine-hervillard.com/"
+documentation: "https://antoine-hervillard.com/gtm-templates-tag-create-a-custom-cookie/"
 versions:
   - sha: 78d2db72e8320c5fafb6c95fd3ea6045a4148a29
     changeNotes: Initial release.
