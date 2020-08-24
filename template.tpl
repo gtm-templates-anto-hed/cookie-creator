@@ -657,7 +657,7 @@ function expire(dropDownMenu1ExpireType) {
     return dropDownMenu1ExpireMinute * 60;
   } else if (dropDownMenu1ExpireType === 'hour') {
     return dropDownMenu1ExpireHour * 3600;
-  } else if (dropDownMenu1ExpireType === 'days') {
+  } else if (dropDownMenu1ExpireType === 'day') {
     return dropDownMenu1ExpireDays * 86400;
   } else if (dropDownMenu1ExpireType === 'months'){
    	return dropDownMenu1ExpireMonths * 2629800;
@@ -676,7 +676,7 @@ const options = {
   'max-age': expire(dropDownMenu1ExpireType),
   'expires' : dropDownMenu1ExpireCustom,
   'samesite' : dropDownMenu1SameSite,
-  'secure' : secure(checkbox1SameSite)
+  'secure' : secure(checkbox1Secure)
 };
 
 log(options);
@@ -765,6 +765,53 @@ ___WEB_PERMISSIONS___
                     "string": "any"
                   }
                 ]
+              },
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "name"
+                  },
+                  {
+                    "type": 1,
+                    "string": "domain"
+                  },
+                  {
+                    "type": 1,
+                    "string": "path"
+                  },
+                  {
+                    "type": 1,
+                    "string": "secure"
+                  },
+                  {
+                    "type": 1,
+                    "string": "session"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "internal"
+                  },
+                  {
+                    "type": 1,
+                    "string": "*"
+                  },
+                  {
+                    "type": 1,
+                    "string": "*"
+                  },
+                  {
+                    "type": 1,
+                    "string": "any"
+                  },
+                  {
+                    "type": 1,
+                    "string": "any"
+                  }
+                ]
               }
             ]
           }
@@ -786,5 +833,4 @@ scenarios: []
 
 ___NOTES___
 
-Created on 26/11/2019 à 12:10:24
-
+Created on 8/24/2020, 11:59:46 AM
